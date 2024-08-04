@@ -90,7 +90,7 @@ async function uploadImage(base64String) {
     }
 
     const data = await response.json();
-    document.getElementById('result').innerHTML = data.category;
+    document.getElementById('result').innerHTML = `Letter predicted: ${data.category}`;
     updateChartAndTable(data.confs);
   } catch (error) {
     console.error('Error details:', error);
