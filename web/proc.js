@@ -1,4 +1,4 @@
-const apiUrl = 'https://ur6c4cws2znwaaw4tzqr2h2qhm0pfqhq.lambda-url.us-west-1.on.aws/'
+const apiUrl = 'https://vqmccixavj3ek64q4id4yi3fuq0xdrcc.lambda-url.us-west-1.on.aws';
 const $alert = $('.alert');
 const alertMessage = document.getElementById('alert-message');
 
@@ -37,7 +37,7 @@ async function handleImageSelection() {
       imageElement.onload = () => {
         const resizedDataUri = resizeImage(imageElement, 380);
         document.querySelector('#img-preview').src = resizedDataUri;
-        const base64String = resizedDataUri.replace("data:", "").replace(/^.+,/, "");
+        const base64String = resizedDataUri.split(',')[1]; // More reliable way to get base64 string
         uploadImage(base64String);
       };
       imageElement.src = dataUri;
@@ -71,22 +71,29 @@ function resizeImage(image, newWidth) {
 
 async function uploadImage(base64String) {
   clearResults();
-  const formData = new FormData();
+  const formData = new URLSearchParams();
   formData.append("filedata", base64String);
 
   try {
     const response = await fetch(`${apiUrl}/image`, {
       method: 'POST',
-      body: formData,
+      mode: 'cors', // Explicitly set CORS mode
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: formData.toString(),
     });
 
-    if (!response.ok) throw new Error('Failed to upload image');
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Failed to upload image: ${response.status} ${response.statusText}. ${errorText}`);
+    }
 
     const data = await response.json();
     document.getElementById('result').innerHTML = data.category;
     updateChartAndTable(data.confs);
   } catch (error) {
-    console.error(error);
+    console.error('Error details:', error);
     alertMessage.innerHTML = error.message;
     $alert.show();
   }
