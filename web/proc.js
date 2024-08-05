@@ -26,6 +26,57 @@ const chart = new Chart(document.getElementById("chart"), {
   }
 });
 
+const chart1 = new Chart(document.getElementById("chart1"), {
+  type: 'bar',
+  data: {
+    labels: [],
+    datasets: [{
+	    label: "% Confidence",
+      backgroundColor: [
+        "rgba(51,122,183,0.6)",
+        "rgba(92,184,92,0.6)",
+        "rgba(217,83,79,0.6)",
+        "rgba(91,192,222,0.6)",
+        "rgba(240,173,78,0.6)",
+        "rgba(51,122,183,0.6)",
+        "rgba(92,184,92,0.6)",
+        "rgba(217,83,79,0.6)",
+        "rgba(91,192,222,0.6)",
+        "rgba(240,173,78,0.6)",
+      ]
+    }]
+  },
+  options: {
+    legend: { position: 'bottom' },
+  }
+});
+
+const chart2 = new Chart(document.getElementById("chart2"), {
+  type: 'doughnut',
+  data: {
+    labels: [],
+    datasets: [{
+	    label: "% Confidence",
+      backgroundColor: [
+        "rgba(51,122,183,0.6)",
+        "rgba(92,184,92,0.6)",
+        "rgba(217,83,79,0.6)",
+        "rgba(91,192,222,0.6)",
+        "rgba(240,173,78,0.6)",
+        "rgba(51,122,183,0.6)",
+        "rgba(92,184,92,0.6)",
+        "rgba(217,83,79,0.6)",
+        "rgba(91,192,222,0.6)",
+        "rgba(240,173,78,0.6)",
+      ]
+    }]
+  },
+  options: {
+    legend: { position: 'bottom' },
+  }
+});
+
+
 async function handleImageSelection() {
   const selectedFile = document.getElementById('fileSelect').files[0];
   try {
@@ -124,5 +175,13 @@ function updateChartAndTable(confidences) {
   chart.data.datasets[0].data = data;
   chart.data.labels = labels;
   chart.update();
+
+  chart1.data.datasets[0].data = data;
+  chart1.data.labels = labels;
+  chart1.update();
+
+  chart2.data.datasets[0].data = data;
+  chart2.data.labels = labels;
+  chart2.update();
 }
 

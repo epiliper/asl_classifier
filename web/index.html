@@ -77,7 +77,7 @@
 									data-bs-toggle="tab"
 									data-bs-target="#table-pane" type="button"
 									role="tab" aria-controls="table-pane"
-									aria-selected="true">Predicition
+									aria-selected="true">Prediction
 									Confidence
 									Table</button>
 							</li>
@@ -86,9 +86,29 @@
 									data-bs-toggle="tab"
 									data-bs-target="#chart-pane" type="button"
 									role="tab" aria-controls="chart-pane"
-									aria-selected="false">Prediciton
+									aria-selected="false">Prediction
 									Confidence
-									Chart</button>
+									Pie Chart</button>
+							</li>
+
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="chart-tab1"
+									data-bs-toggle="tab"
+									data-bs-target="#chart-pane1" type="button"
+									role="tab" aria-controls="chart-pane1"
+									aria-selected="false">Prediction
+									Confidence
+									Bar Chart</button>
+							</li>
+
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="chart-tab2"
+									data-bs-toggle="tab"
+									data-bs-target="#chart-pane2" type="button"
+									role="tab" aria-controls="chart-pane2"
+									aria-selected="false">Prediction
+									Confidence
+									Doughnut Plot</button>
 							</li>
 						</ul>
 						<div class="tab-content" id="myTabContent">
@@ -113,6 +133,19 @@
 									<canvas id="chart" height="200"></canvas>
 								</div>
 							</div>
+							<div class="tab-pane fade" id="chart-pane1" role="tabpanel"
+								aria-labelledby="chart-tab1">
+								<div class="mb-3 mt-3">
+									<canvas id="chart1" height="200"></canvas>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="chart-pane2" role="tabpanel"
+								aria-labelledby="chart-tab2">
+								<div class="mb-3 mt-3">
+									<canvas id="chart2" height="200"></canvas>
+								</div>
+							</div>
+
 						</div>
 					</div>
 				</div>
