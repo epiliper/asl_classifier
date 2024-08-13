@@ -1,4 +1,4 @@
-const apiUrl = 'https://vqmccixavj3ek64q4id4yi3fuq0xdrcc.lambda-url.us-west-1.on.aws';
+const apiUrl = '';
 const $alert = $('.alert');
 const alertMessage = document.getElementById('alert-message');
 
